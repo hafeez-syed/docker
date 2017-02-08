@@ -128,7 +128,9 @@ $ docker stop hafeez-web-server
 ## To run community image from docker hub registry
 ---
 
-### 11. we download oracle xe image
+### 11. 
+
+Download oracle xe image
 
 + checkout the github [here](https://github.com/wnameless/docker-oracle-xe-11g)
 + also visit the dockerhub [registry](https://hub.docker.com/r/wnameless/oracle-xe-11g/) for detailed instructions
