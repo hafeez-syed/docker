@@ -9,6 +9,8 @@ Install and configure Docker to run on your computer to work with Docker images,
 + `pull` downloads the image
 + `nginx` is the image for nginx server
 
+# Downloading nginx image
+
 
 ```
 $ docker pull nginx
@@ -130,7 +132,7 @@ $ docker stop hafeez-web-server
 
 ### 11. 
 
-Download oracle xe image
+## Downloading Oracle xe image
 
 + checkout the github [here](https://github.com/wnameless/docker-oracle-xe-11g)
 + also visit the dockerhub [registry](https://hub.docker.com/r/wnameless/oracle-xe-11g/) for detailed instructions
@@ -153,4 +155,54 @@ $ docker run -d -p 49160:22 -p 49161:1521 --name hafeez-oracle-xe wnameless/orac
 ```
 
 ---
+
+### 13. 
+
+## Downloading Rabbitmq (with management plugin)
+
++ checkout dockerhub rabbitmq [registry](https://hub.docker.com/_/rabbitmq/) and [tags](https://hub.docker.com/r/library/rabbitmq/tags/) section for detailed instructions
+
+```
+$ docker pull rabbitmq:3.6.6-management
+```
+
+---
+
+
+### 14. 
+
+
++ notice a new flag i.e `--hostname` is to define the hostname to the container
++ `my-rabbit` is the hostname provide to Rabbitmq
+
+```
+$ docker run -d -p 15672:15672 --hostname my-rabbit --name hafeez-some-rabbit rabbitmq:3.6.6-management
+```
+
+---
+
+### 15. 
+
+
++ flag i.e `-e` is to define environment variables
++ I have define environment variabels for `RABBITMQ_DEFAULT_USER`, `RABBITMQ_DEFAULT_PASS` and `RABBITMQ_DEFAULT_VHOST`
+
+```
+$ docker run -d -p 15672:15672 --hostname my-rabbit --name hafeez-some-rabbit -e RABBITMQ_DEFAULT_USER=hafeez -e RABBITMQ_DEFAULT_PASS=hafeez -e RABBITMQ_DEFAULT_VHOST=my_vhost rabbitmq:3.6.6-management
+```
+
+---
+
+### 15. 
+
+
++ `logs` will all output the infol related to the container
+
+```
+$ docker logs hafeez-some-rabbit
+
+```
+
+---
+
 
