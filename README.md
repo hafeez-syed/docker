@@ -193,7 +193,7 @@ $ docker run -d -p 15672:15672 --hostname my-rabbit --name hafeez-some-rabbit -e
 
 ---
 
-### 15. 
+### 16. 
 
 
 + `logs` will all output the infol related to the container
@@ -204,5 +204,51 @@ $ docker logs hafeez-some-rabbit
 ```
 
 ---
+
+### 17. 
+
+## Downloading mongodb image from dockerhub
+
+
+```
+$ docker pull mongo
+
+```
+
+---
+
+### 18. 
+
++ flag `-v` is for mounting the volume
++ `/Workspace/mongo/data/db` is physical space this machine (don't forget to add this path to docker preference -> file sharing) whereas
++ `/data/db` is the location inside docker
++ `7017` is the port mongodb is running on this machine whereas `27017` is docker's port
+
+Note: only define `port -p` and `volume -v` when ports and locations are different otherwise docker wont start
+
+```
+$ docker run -d -p 7017:27017 --name hafeez-mongo -v /Workspace/mongo/data/db:/data/db mongo:latest
+
+```
+
+---
+
+## To execute / access docker container
+---
+
+### 19. 
+
+
++ `-i` flag is for interactive mode
++ `-t` flag is for terminal mode
++ exec command will let you access the container inside
+
+```
+$ docker exec -it custom-container-name image-name
+```
+
+---
+
+
 
 
