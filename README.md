@@ -250,5 +250,52 @@ $ docker exec -it custom-container-name image-name
 ---
 
 
+## Run first docker build using dockerfile
+---
 
+### 20.
 
++ create `Dockerfile` and write the following commands
++ `FROM alpine` will download the alpine image
++ `COPY script.sh /script.sh` will copy the file from machine's physical location to the docker container
++ `CMD ["/script.sh"]` will execute the `script.sh`
+
+```
+FROM alpine
+
+COPY script.sh /script.sh
+
+CMD ["/script.sh"]
+
+```
+
++ create `script.sh` and write the following
+
+```
+#! /bin/sh
+
+echo Hello World
+
+top
+
+```
+
++ now give permissions to `script.sh` to execute the file
+
+```
+$ chmod +x script.sh
+```
+
++ now run the docker build
+
+```
+$ docker build .
+```
+
+> once the build is successful, it will give you a container id similar to `985065ef0459f`
+
++ run the container with the following
+
+```
+$ docker run --name hafeez-first-build 985065ef0459f
+```
