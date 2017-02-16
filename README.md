@@ -299,3 +299,32 @@ $ docker build .
 ```
 $ docker run --name hafeez-first-build 985065ef0459f
 ```
+
+>
+## Kiling Docker running on PID 1 :(
+---
+>
+When you run docker build command, it will run `script.sh` which runs `top` command. Output would look similar to below
+
+![Top](assets/images/script-pid1.png)
+
+Unfortunately, if you try to exit or kill it, you won't :(.
+
+TO do this You have to open up another terminal window and stop the docker container so the previous terminal will exit.
+
+>
+## The FIX - dumb-init comes to the rescue
+Clone the [dumd-init repo](https://github.com/Yelp/dumb-init) into the docker and execute it.
+
+![Dockerfile](assets/images/dockerfile.png)
+
+
+Now run the docker build and notice `PID 1`
+
+![Top](assets/images/dumb-init-pid1.png)
+
+"PID 1" is now being used by `dumb-init` instead `script.sh`. 
+
+Try exiting now :) 
+
+
